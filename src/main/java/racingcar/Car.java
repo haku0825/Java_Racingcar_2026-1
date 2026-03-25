@@ -12,6 +12,12 @@ public class Car {
         this.count = 0;
     }
 
+    public void upCount(int number) {
+        if (number >= 4) {
+            this.count ++;
+        }ㅎ
+    }
+
     public String getCarName() {
         return carName;
     }
