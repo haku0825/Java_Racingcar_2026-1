@@ -15,7 +15,7 @@ public class Car {
     public void upCount(int number) {
         if (number >= 4) {
             this.count ++;
-        }ㅎ
+        }
     }
 
     public String getCarName() {
