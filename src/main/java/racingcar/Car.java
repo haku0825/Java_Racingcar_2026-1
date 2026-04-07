@@ -1,36 +1,21 @@
 package racingcar;
 
 public class Car {
+    // public에서 private으로 변경하여 외부 조작 방지
+    private String carName;
+    private int count;
 
-    public String carName;
-    public int count;
-
-    public Car() {}
-
-    public Car(String carName) {    // 매개변수를 가진 생성자
+    public Car(String carName) {
         this.carName = carName;
         this.count = 0;
     }
 
     public void upCount(int number) {
         if (number >= 4) {
-            this.count ++;
+            this.count++;
         }
     }
 
-    public String getCarName() {
-        return carName;
-    }
-
-    public void setCarName(String carName) {
-        this.carName = carName;
-    }
-
-    public int getCount() {
-        return count;
-    }
-
-    public void setCount(int count) {
-        this.count = count;
-    }
+    public String getCarName() { return carName; }
+    public int getCount() { return count; }
 }

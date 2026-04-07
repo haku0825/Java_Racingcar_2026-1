@@ -5,7 +5,8 @@ import java.util.List;
 
 public class RacingResult {
 
-    RacingGame racingGame = new RacingGame();
+    // 문제의 원인! 이 줄을 과감하게 삭제합니다.
+    // RacingGame racingGame = new RacingGame(); 
 
     public void result(List<Car> carList) {
         ArrayList<String> winnerList = new ArrayList<>();

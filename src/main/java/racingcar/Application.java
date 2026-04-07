@@ -4,15 +4,17 @@ import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-        // 1. 게임 엔진 객체 생성
-        RacingGame racingGame = new RacingGame();
+        // 1. 입출력 뷰 객체 생성
+        InputView inputView = new InputView();
+        OutputView outputView = new OutputView();
 
-        // 2. 게임 실행 및 최종 자동차 리스트 받아오기
-        // RacingGame.java의 start 메서드는 List<Car>를 반환하도록 설계하셨습니다.
-        List<Car> carList = racingGame.start(null);
+        // 2. 게임 엔진에 뷰 객체 주입 및 실행 (null 파라미터 제거)
+        RacingGame racingGame = new RacingGame(inputView, outputView);
+        List<Car> carList = racingGame.start();
 
         // 3. 우승자 판별 및 결과 출력
+        // (RacingResult 내부에서도 outputView를 사용하도록 수정하는 것을 권장함)
         RacingResult racingResult = new RacingResult();
-        racingResult.result(carList);
+        racingResult.result(carList); 
     }
 }

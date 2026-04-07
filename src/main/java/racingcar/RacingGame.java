@@ -1,39 +1,32 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.List;
 
 public class RacingGame {
+    private final InputView inputView;
+    private final OutputView outputView;
 
-    InputView inputView = new InputView();
+    // 생성자를 통한 의존성 주입
+    public RacingGame(InputView inputView, OutputView outputView) {
+        this.inputView = inputView;
+        this.outputView = outputView;
+    }
 
-    public List<Car> start(List<Car> list) {
-
+    // 불필요한 List<Car> 매개변수 제거
+    public List<Car> start() {
         List<Car> carList = inputView.createCars();
         int count = inputView.getCount();
 
-        System.out.println("실행결과");
+        outputView.printRunResultHeader();
 
-        for (int i = 0; i < count; i ++) {
+        for (int i = 0; i < count; i++) {
             for (Car car : carList) {
-                int randomNumber = Randoms.pickNumberInRange(0,9);
+                int randomNumber = Randoms.pickNumberInRange(0, 9);
                 car.upCount(randomNumber);
+                outputView.printCarPosition(car); // 출력 위임
             }
-
-            for (Car car : carList) {
-                int carCount = car.getCount();
-                String carName = car.getCarName();
-
-                System.out.print(carName + " : ");
-
-                for (int j = 0; j < carCount; j++) {
-                    System.out.print("-");
-                }
-
-                System.out.println();
-            }
-            System.out.println();
+            outputView.printEmptyLine();
         }
         return carList;
     }
